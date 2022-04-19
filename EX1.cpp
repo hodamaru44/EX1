@@ -4,13 +4,14 @@
 #include <iostream>
 #include <iomanip>
 #include "getBmi.h"
+#include "getObesity.h"
 using namespace std;
-
 int main()
 {
     double height; //身長
     double weight; //体重
     double bmi;    //BMI
+    double obesity;
     double stdWsight;
     unsigned char grade;
     //キー入力をheightに格納する
@@ -20,26 +21,26 @@ int main()
     cout << "体重（kg）を入力してください:";
     cin >> weight;
     bmi = getBmi(height, weight);
-  
+    obesity = getObesity(bmi);
+
     //BMIを画面に表示する
     cout << "あなたのBMIは、" <<fixed<<setprecision(1)<< bmi << "です。" << endl;
-   
-    if (bmi > 40) {
+    if (obesity ==4) {
         cout << "肥満(4度）" << endl;
     }
-    else if (bmi > 35)
+    else if (obesity ==3)
     {
         cout << "肥満(3度)" << endl;
     }
-    else if (bmi >30)
+    else if (obesity ==2)
     {
         cout << "肥満(2度)" << endl;
     }
-    else if (bmi >25)
+    else if (obesity ==1)
     {
         cout << "肥満(1度）" << endl;
     }
-    else if(bmi > 18.5)
+    else if (obesity ==0)
     {
         cout << "普通体重" << endl;
     }
@@ -47,6 +48,7 @@ int main()
     {
         cout << "低体重です。" << endl;
     }
+    
     return 0;
 }
 
